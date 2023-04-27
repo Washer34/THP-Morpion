@@ -32,6 +32,7 @@ class Application
         puts "Réponse invalide, veuillez réessayer. (O/N)".red
         print "> "
         answer = gets.chomp.upcase
+        system("clear")
       end
 
       # Si la réponse est N, on sort de la boucle

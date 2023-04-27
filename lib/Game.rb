@@ -51,49 +51,51 @@ class Game
   end
 
 
-# Cette méthode vérifie si un joueur a remporté la partie ou si la partie est nulle
-def game_over
-  # Vérifier si le joueur actuel a gagné la partie
-  if board.cases[0].value == current_player.symbol && board.cases[1].value == current_player.symbol && board.cases[2].value == current_player.symbol ||
-     board.cases[3].value == current_player.symbol && board.cases[4].value == current_player.symbol && board.cases[5].value == current_player.symbol ||
-     board.cases[6].value == current_player.symbol && board.cases[7].value == current_player.symbol && board.cases[8].value == current_player.symbol ||
-     board.cases[0].value == current_player.symbol && board.cases[3].value == current_player.symbol && board.cases[6].value == current_player.symbol ||
-     board.cases[1].value == current_player.symbol && board.cases[4].value == current_player.symbol && board.cases[7].value == current_player.symbol ||
-     board.cases[2].value == current_player.symbol && board.cases[5].value == current_player.symbol && board.cases[8].value == current_player.symbol ||
-     board.cases[0].value == current_player.symbol && board.cases[4].value == current_player.symbol && board.cases[8].value == current_player.symbol ||
-     board.cases[2].value == current_player.symbol && board.cases[4].value == current_player.symbol && board.cases[6].value == current_player.symbol
-    return "victory" # Renvoie la chaîne "victory" si le joueur actuel a gagné la partie
-  # Vérifier si la partie est nulle
-  elsif board.is_full?
-    return "draw" # Renvoie la chaîne "draw" si la partie est nulle
-  else
-    return "ongoing" # Renvoie la chaîne "ongoing" si la partie continue
-  end
-end
-
-# Cette méthode permet de jouer au jeu de morpion
-def play
-  puts "Bienvenue dans le jeu du Morpion !".red
-  puts "Voici les règles : le but du jeu est d'aligner 3 symboles identiques sur une ligne, une colonne ou une diagonale.".yellow
-  puts "Les joueurs alternent les tours. Le joueur 1 joue avec le symbole X, le joueur 2 avec le symbole O.".yellow
-  puts "Les cases sont numérotées de 1 à 9, de haut en bas et de gauche à droite.".yellow
-  puts "Bonne chance !".yellow
-  puts ""
-  puts "Voici le plateau de jeu :".magenta
-  puts ""
-
-  # Tant que la partie continue
-  while status == "ongoing"
-    Show.display_board(board) # Afficher le plateau de jeu
-    play_turn # Demander au joueur actuel de jouer
+  # Cette méthode vérifie si un joueur a remporté la partie ou si la partie est nulle
+  def game_over
+    # Vérifier si le joueur actuel a gagné la partie
+    if board.cases[0].value == current_player.symbol && board.cases[1].value == current_player.symbol && board.cases[2].value == current_player.symbol ||
+       board.cases[3].value == current_player.symbol && board.cases[4].value == current_player.symbol && board.cases[5].value == current_player.symbol ||
+       board.cases[6].value == current_player.symbol && board.cases[7].value == current_player.symbol && board.cases[8].value == current_player.symbol ||
+       board.cases[0].value == current_player.symbol && board.cases[3].value == current_player.symbol && board.cases[6].value == current_player.symbol ||
+       board.cases[1].value == current_player.symbol && board.cases[4].value == current_player.symbol && board.cases[7].value == current_player.symbol ||
+       board.cases[2].value == current_player.symbol && board.cases[5].value == current_player.symbol && board.cases[8].value == current_player.symbol ||
+       board.cases[0].value == current_player.symbol && board.cases[4].value == current_player.symbol && board.cases[8].value == current_player.symbol ||
+       board.cases[2].value == current_player.symbol && board.cases[4].value == current_player.symbol && board.cases[6].value == current_player.symbol
+      return "victory" # Renvoie la chaîne "victory" si le joueur actuel a gagné la partie
+    # Vérifier si la partie est nulle
+    elsif board.is_full?
+      return "draw" # Renvoie la chaîne "draw" si la partie est nulle
+    else
+      return "ongoing" # Renvoie la chaîne "ongoing" si la partie continue
+    end
   end
 
-  Show.display_board(board) # Afficher le plateau de jeu à la fin de la partie
+  # Cette méthode permet de jouer au jeu de morpion
+  def play
+    puts "Bienvenue dans le jeu du Morpion !".red
+    puts "Voici les règles : le but du jeu est d'aligner 3 symboles identiques sur une ligne, une colonne ou une diagonale.".yellow
+    puts "Les joueurs alternent les tours. Le joueur 1 joue avec le symbole X, le joueur 2 avec le symbole O.".yellow
+    puts "Les cases sont numérotées de 1 à 9, de haut en bas et de gauche à droite.".yellow
+    puts "Bonne chance !".yellow
+    puts ""
+    puts "Voici le plateau de jeu :".magenta
+    puts ""
 
-  # Afficher le résultat de la partie
-  if status == "victory"
-    puts "#{current_player.name} remporte la partie !".green
-  else
-    puts "Match nul!".yellow
+    # Tant que la partie continue
+    while status == "ongoing"
+      Show.display_board(board) # Afficher le plateau de jeu
+      play_turn # Demander au joueur actuel de jouer
+      system("clear")
+    end
+
+    Show.display_board(board) # Afficher le plateau de jeu à la fin de la partie
+
+    # Afficher le résultat de la partie
+    if status == "victory"
+      puts "#{current_player.name} remporte la partie !".green
+    else
+      puts "Match nul!".yellow
+    end
   end
 end
