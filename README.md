@@ -1,6 +1,8 @@
-############################################
-Voici mon jeu du Morpion
-############################################
+####################################
+
+    Voici mon jeu du Morpion
+
+####################################
 
 - N'oubliez pas de 'Bundle install'
 - Executez 'Ruby Application.rb'
