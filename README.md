@@ -1,6 +1,8 @@
 ####################################
 
-    Voici mon jeu du Morpion
+<div align="center">
+<h1>Voici mon jeu du Morpion</h1>
+</div>
 
 ####################################
 
